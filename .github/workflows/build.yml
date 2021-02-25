@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Restore cached toolchain
+      uses: actions/cache@v2
+      with:
+        path: Saturn-SDK-GCC-SH2
+        key: toolchain
     - name: Check out satiator-menu
       # user/org needs to have a fork of iapetus as submodule is defined as ../iapetus.git
       uses: actions/checkout@v2

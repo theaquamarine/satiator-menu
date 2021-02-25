@@ -38,7 +38,7 @@ jobs:
         SYSROOTDIR: ${{ github.workspace }}/Saturn-SDK-GCC-SH2/toolchain/sysroot
         ROOTDIR:  ${{ github.workspace }}
         DOWNLOADDIR:  ${{ github.workspace }}/Saturn-SDK-GCC-SH2/download
-        PROGRAM_PREFIX: sh-none-elf-
+        PROGRAM_PREFIX: sh-none-
         NCPU: 2
     - name: Check out satiator-menu
       # user/org needs to have a fork of iapetus as submodule is defined as ../iapetus.git

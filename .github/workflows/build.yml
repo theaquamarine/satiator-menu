@@ -56,7 +56,7 @@ jobs:
       if: ${{ failure() }}
       with:
         name: configlogs
-        path: satiator-menu/**/config.log
+        path: '**/config.log'
     - name: Upload menu.bin artifact
       uses: actions/upload-artifact@v2
       with:

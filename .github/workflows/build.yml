@@ -21,7 +21,7 @@ jobs:
         fi
         echo SRCDIR $SRCDIR BUILDDIR $BUILDDIR TARGETMACH $TARGETMACH BUILDMACH $BUILDMACH HOSTMACH $HOSTMACH INSTALLDIR $INSTALLDIR SYSROOTDIR $SYSROOTDIR ROOTDIR $ROOTDIR DOWNLOADDIR $DOWNLOADDIR PROGRAM_PREFIX $PROGRAM_PREFIX
         sudo apt-get -y install automake autoconf-archive bison texinfo
-        ./Saturn-SDK-GCC-SH2/build-elf.sh
+        ./build-elf.sh
         export PATH="$PATH:$(INSTALLDIR)/bin"
       working-directory: Saturn-SDK-GCC-SH2
       env: 

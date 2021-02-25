@@ -15,7 +15,6 @@ jobs:
         path: satiator-menu
         submodules: true
     - name: Check out toolchain
-      if: steps.toolchaincache.outputs.cache-hit != 'true'
       uses: actions/checkout@v2
       with:
         repository: miracoli/Saturn-SDK-GCC-SH2
@@ -25,7 +24,7 @@ jobs:
       uses: actions/cache@v2
       id: toolchaincache
       with:
-        path: Saturn-SDK-GCC-SH2
+        path: Saturn-SDK-GCC-SH2/toolchain
         key: toolchain
     - name: Build toolchain
       # Only build if we don't have a cached version

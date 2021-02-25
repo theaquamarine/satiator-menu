@@ -23,18 +23,25 @@ jobs:
         sudo apt-get -y install automake autoconf-archive bison texinfo
         ./Saturn-SDK-GCC-SH2/build-elf.sh
         export PATH="$PATH:$(INSTALLDIR)/bin"
+      working-directory: Saturn-SDK-GCC-SH2
       env: 
-        SRCDIR: ${{ github.workspace }}/source
-        BUILDDIR:  ${{ github.workspace }}/build
+        SRCDIR: ${{ github.workspace }}/Saturn-SDK-GCC-SH2/source
+        BUILDDIR:  ${{ github.workspace }}/Saturn-SDK-GCC-SH2/build
         TARGETMACH: sh-elf
         BUILDMACH: x86_64-pc-linux-gnu
         HOSTMACH: x86_64-pc-linux-gnu
-        INSTALLDIR:  ${{ github.workspace }}/toolchain
-        SYSROOTDIR: ${{ github.workspace }}/toolchain/sysroot
+        INSTALLDIR:  ${{ github.workspace }}/Saturn-SDK-GCC-SH2/toolchain
+        SYSROOTDIR: ${{ github.workspace }}/Saturn-SDK-GCC-SH2/toolchain/sysroot
         ROOTDIR:  ${{ github.workspace }}
-        DOWNLOADDIR:  ${{ github.workspace }}/download
+        DOWNLOADDIR:  ${{ github.workspace }}/Saturn-SDK-GCC-SH2/download
         PROGRAM_PREFIX: sh-none-elf-
         NCPU: 2
+    - name: path1
+      run: echo "$PATH"
+    - name: set $PATH
+      run: echo '${{ github.workspace }}/Saturn-SDK-GCC-SH2/toolchain/bin' >> $GITHUB_PATH
+    - name: path2
+      run: echo "$PATH"
     - name: Check out satiator-menu
       uses: actions/checkout@v2
       with:
@@ -42,9 +49,11 @@ jobs:
         submodules: true
     - name: Build satiator-menu
       run: |
-        cd satiator-menu
+        PATH = "${{ github.workspace }}/Saturn-SDK-GCC-SH2/toolchain/bin:$PATH"
         sudo apt-get -y install cmake
         make
+      working-directory: satiator-menu
+      
     - name: Upload menu.bin artifact
       uses: actions/upload-artifact@v2
       with:

@@ -38,8 +38,6 @@ jobs:
               brew install coreutils
         fi
         echo SRCDIR $SRCDIR BUILDDIR $BUILDDIR TARGETMACH $TARGETMACH BUILDMACH $BUILDMACH HOSTMACH $HOSTMACH INSTALLDIR $INSTALLDIR SYSROOTDIR $SYSROOTDIR ROOTDIR $ROOTDIR DOWNLOADDIR $DOWNLOADDIR PROGRAM_PREFIX $PROGRAM_PREFIX
-        wget http://ftp.br.debian.org/debian/pool/main/a/automake-1.16/automake_1.16.1-4_all.deb
-        sudo apt-get -y install ./automake_1.16.1-4_all.deb
         sudo apt-get -y install autoconf-archive bison texinfo
         ./build-elf.sh
       working-directory: Saturn-SDK-GCC-SH2
